@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>QRText — Create QR Codes</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="container">
+    <h1>QRText</h1>
+    <p class="lead">Enter text and generate a QR code. Download it as a PNG.</p>
+
+    <label for="text">Text / URL</label>
+    <textarea id="text" placeholder="Type text or paste a URL..." rows="4"></textarea>
+
+    <div class="controls">
+      <label for="size">Size (px)</label>
+      <input id="size" type="number" min="64" max="2048" value="256" />
+
+      <label for="level">Error correction</label>
+      <select id="level">
+        <option value="L">L — Low (7%)</option>
+        <option value="M" selected>M — Medium (15%)</option>
+        <option value="Q">Q — Quartile (25%)</option>
+        <option value="H">H — High (30%)</option>
+      </select>
+    </div>
+
+    <div class="buttons">
+      <button id="generate">Generate QR Code</button>
+      <button id="download" disabled>Download PNG</button>
+    </div>
+
+    <div class="preview">
+      <h2>Preview</h2>
+      <div id="qr-wrap" aria-live="polite">
+        <!-- Canvas will be used for QR output -->
+        <canvas id="qr-canvas" width="256" height="256" aria-hidden="true"></canvas>
+      </div>
+    </div>
+
+    <footer>
+      <small>Built with QRious (CDN). Input is processed locally in your browser.</small>
+    </footer>
+  </main>
+
+  <!-- QRious QR generator library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
